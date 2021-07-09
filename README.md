@@ -16,7 +16,7 @@ To exit, type `quit` in the shell prompt.
 ### Functions:
 
 - `pwd:` The `pwd` command displays the present working directory using the `getcwd()` function, from the file `pwd.c`.
-- 
+
 - `cd:` The cd command by itself does nothing, however given an argument it changes the directory to the one specified in the argument, using `chdir`, from the file `cd.c`. It also supports `., .., - and ~` as arguments for `cd`. `cd -` changes to the previous working directory.
 
 - `echo:` The echo command prints it's arguments on the terminal using simple print statement, from the `echo.c` file. When used by itself, echo returns a blank line.
