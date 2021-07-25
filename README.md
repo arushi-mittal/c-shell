@@ -44,3 +44,11 @@ To exit, type `quit` in the shell prompt.
 - `bg` and `fg` commands bring a foreground process to background and a background process to foreground by sending a `SIGCONT` signal. In case of `fg`, the functioning is paused until the program finishes execution.
 
 - `setenv` and `unsetenv` are used to set and unset variables respectively. They accept 2 and 1 arguments respectively, and display errors if that is not done.
+
+
+### Learning Objectives
+
+- Learning about system libraries and how to manipulate and use operating system information using the C Programming Language.
+- Learning about Linux man pages and how to use them for implementing different processes and finding information.
+- Learning about different bash commands and how to implement them using C and system libraries.
+- How to handle foreground and background processes, interrupts, and signals concurrently.
