@@ -13,6 +13,12 @@ $ ./shell
 ```
 To exit, type `quit` in the shell prompt.
 
+### File Structure
+
+Each command is stored in a unique file along with its functionality, while the main program runs in the `main.c` file.
+
+![File Structure](./filestructure.png)
+
 ### Functions:
 
 - `pwd:` The `pwd` command displays the present working directory using the `getcwd()` function, from the file `pwd.c`.
