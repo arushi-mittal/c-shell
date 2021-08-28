@@ -13,6 +13,10 @@ $ ./shell
 ```
 To exit, type `quit` in the shell prompt.
 
+The shell functions exactly like a normal terminal would, and if the code has been downloaded and executed successfully, it should look like this:
+
+![Shell Example](./Shell%20Example.png)
+
 ### File Structure
 
 Each command is stored in a unique file along with its functionality, while the main program runs in the `main.c` file.
@@ -20,6 +24,8 @@ Each command is stored in a unique file along with its functionality, while the 
 ![File Structure](./filestructure.png)
 
 ### Functions:
+
+- The shell displays the `host name` and the `user name` formatted the way these details are shown in an ordinary shell.
 
 - `pwd:` The `pwd` command displays the present working directory using the `getcwd()` function, from the file `pwd.c`.
 
@@ -31,7 +37,7 @@ Each command is stored in a unique file along with its functionality, while the 
 
 - `pinfo:` Pinfo is a command not shown in a regular shell, but for the purposes of this one, it displays the process information such as process id, virtual memory used, executable path and status using `/proc/[pid]/stat` and `/proc/[pid]/exe` files, from the `pinfo.c` file. Given a process id it displays the information for that id, otherwise it displays information for the process id of the shell.
 
-- Additional Processes: The shell also supports running both background and foreground processes differentiated by the character `&`. When background processes cease running, the program displays the name and process id of the terminating process, from the `proc.c` and `execute.c` files. 2 arrays `jobnmames` and `jobpid` store the names and process ids of ongoing background processes. Whenever a process terminates, the termination is detected using signal(`SIGCHLD`, ()) and then stopped. It is also removed from the `jobnames` and `jobpid` arrays after displaying exit information.
+- Additional Processes: The shell also supports running both background and foreground processes differentiated by the character `&`. When background processes cease running, the program displays the name and process id of the terminating process, from the `proc.c` and `execute.c` files. 2 arrays `jobnames` and `jobpid` store the names and process ids of ongoing background processes. Whenever a process terminates, the termination is detected using signal(`SIGCHLD`, ()) and then stopped. It is also removed from the `jobnames` and `jobpid` arrays after displaying exit information.
 
 - `nightswatch:` The nightswatch command uses a default interval of 5 seconds, but can also take an input of interval followed by the -n flag. Given the argument interrupt, this command displays the keyboard interrupts (i8042) every n seconds, and when the user presses q + Enter, it stops and resumes regular shell functions, from the nightswatch.c file. The information is obtained from the /proc/interrupts file. Non-blocking input is taken using fcntl | O_NONBLOCK. 
 
@@ -51,6 +57,12 @@ Each command is stored in a unique file along with its functionality, while the 
 
 - `setenv` and `unsetenv` are used to set and unset variables respectively. They accept 2 and 1 arguments respectively, and display errors if that is not done.
 
+### Additional information
+
+- The main code is present in the `main.c` file which initializes the shell, displays basic information, and calls all the other commands. 
+- The `shell.c` file contains the loop that controls the execution of the shell, along with functions for `piping` and `redirection`.
+- All files contain a `C` file and a `headers` file where the `C` file contains the main code for that particular component, and the header file contains the headers for those particular components so that they can be used in the other files as well.
+- The code is `modularized` with multiple functions to reduce redundancy, and all the commands have separate files to ensure they can function independently and effectively.
 
 ### Learning Objectives
 
